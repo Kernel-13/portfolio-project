@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Product Page</title>
+    <meta name="description" content="A simple page to showcase the platform's products">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* * { outline: 1px solid red; } */
+        .product-card {
+            max-width: 400px;
+            border: 2px solid navy;
+            box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.3);
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .product-card span {
+            background-color: blueviolet;
+            color: white;
+            border-radius: 3px;
+            padding: 5px 15px;
+        }
+        .product-card span,figcaption {
+            font-family: math;
+        }
+        .product-card p {
+            font-family: monospace;
+            font-size: large;
+            margin-top: 2px;
+        }
+        figure img {
+            width: 100%;
+            height: auto;
+        }
+        form {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+        form button {
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        h2 {
+            font-family: system-ui;
+            margin-bottom: 2px;
+        }
+
+    </style>
+</head>
+<body>
+    <main class="product-card">
+        <span>NEW!</span>
+        <figure>
+            <img src="../assets/images/fruits1.png" alt="Some alt text.">
+            <figcaption>The new dish has arrived!</figcaption>
+        </figure>
+        
+        <h2>A Catchy Title</h2>
+        <p><strong>€ 11.99</strong></p>
+        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore 
+            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+        </p>
+
+        <form action="" target="_blank" id="add-product">
+            <div id="select-container">
+                <label for="item-quantity">Select quantity:</label>
+                <select name="item-quantity" id="item-quantity">
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                    <option value="4">Four</option>
+                </select>
+            </div>
+            <button type="submit" for="add-product">Add to Cart</button>
+        </form>
+
+    </main>
+</body>
+</html>
