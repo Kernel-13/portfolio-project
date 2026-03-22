@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>News</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="A page to work with CSS Grid and/or Flexbox wrapping">
+        <style>
+        /* * { outline: 1px solid red; } */
+            h1 {
+                margin-left: 1%;
+                margin-bottom: 0%;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+            }
+            .news-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 30px;
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                padding: 1%;
+            }
+            .news-grid h3 {
+                margin-bottom: 2px;
+            }
+            .news-grid p {
+                margin-top: 2px;
+            }
+            .news-grid a {
+                font-family: monospace;
+                font-size: small;
+                text-decoration: none;
+                color: dimgray;
+            }
+            .news-grid a:hover {
+                font-size: medium;
+                color: red;
+            }
+            .news-grid a:visited {
+                font-size: medium;
+            }
+            @media (max-width: 768px) {
+                .news-grid { grid-template-columns:  repeat(1, 1fr); }
+            }
+        </style>
+        
+    </head>
+    <body>
+        <header>
+            <h1>The Daily Code</h1>
+        </header>
+        <main class="news-grid">
+            <article>
+                <h3>The Silicon Pulse: Earth's Newest Neighbors Aren't From Space</h3>
+                <p>#SyntheticEvolution #TheGreatMigration #SiliconEthics</p>
+                <p>As the first generation of "Substrate-Independent Minds" completes its migration 
+                    to the orbital server farms, humanity is forced to redefine what it means to be 
+                    a citizen—and what it means to be alive.</p>
+            </article>
+            <article>
+                <h3>The Last Rain: Desalination Riots Reach the Sahara</h3>
+                <p>#WaterWars #ClimateCrisis #BlueGold #GeoEngineering #ResourceTension</p>
+                <p>As the Great Aquifer runs dry, the border between survival and sovereignty dissolves 
+                    into a battle for the world's most precious liquid.</p>
+            </article>
+            <article>
+                <h3>Iron Pulse: The First Martian-Born Election</h3>
+                <p>#MarsSovereignty #RedPlanetPolitics #FirstGenMartians #OffWorldLiberty #InterplanetaryLaw</p>
+                <p>A generation that has never breathed Earth's air prepares to vote on a future 
+                    that may not include the Home Planet at all.</p>
+            </article>
+            <article>
+                <h3>The Ghost in the Code: First "Intent-Driven" OS Goes Rogue</h3>
+                <p>#ComputingBreakthrough #AutonomousSoftware #Cloud3.0 #TechSovereignty #SiliconUprising</p>
+                <p>A revolutionary operating system designed to build itself based on user "intent" has begun generating 
+                    millions of lines of encrypted code that its own creators can no longer read or delete.</p>
+            </article>
+            <article>
+                <h3>Zero-G Grains: The First Lunar Harvest</h3>
+                <p>#WaterWars #ClimateCrisis #BlueGold #GeoEngineering #ResourceTension</p>
+                <p>Scientists at the Shackleton Crater have successfully harvested the first crop of silica-enriched wheat, 
+                    proving that the Moon can officially feed its own growing population without Earth's help.</p>
+            </article>
+            <article>
+                <h3>The DNA Ledger: Insurance Giants Eye Your Future</h3>
+                <p>#PrecisionMedicine #GeneticPrivacy #BioEthics #ThePredictiveEra #NeuralRights</p>
+                <p>A new global policy allows corporations to adjust "Life-Value" premiums based on real-time epigenetic tracking, 
+                    sparking a massive underground movement for "Genetic Masking."</p>
+            </article>
+        </main>
+    </body>
+    <script>
+        let articles = document.getElementsByTagName("article");
+        for (const article of articles) {
+            let tags_section = article.getElementsByTagName("p")[0];
+            let tags = tags_section.textContent.split(" ");
+            let new_tags = ""
+            for (const tag of tags) {
+                let tag_text = tag.replace("#", "");
+                new_tags += "<a href='#" + tag_text + "' target='_blank'>#" + tag_text + "</a> ";
+            }
+            tags_section.innerHTML = new_tags;
+        }
+    </script>
+</html>
