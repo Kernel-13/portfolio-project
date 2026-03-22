@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Plans and Pricing</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pricing section for a SaaS (Software as a Service) company">
+    <style>
+        .pricing-container {
+            width: 100%;
+            height: auto;
+            padding: 5% 10% 5% 10%;
+            box-sizing: border-box;
+        }
+        table {
+            width: 100%;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+        }
+        tr:nth-child(even) {
+            background-color: gainsboro;
+        }
+        .featured {
+            background-color: rgba(0, 0, 0, 0.3);
+            border: 1px solid black;
+        }
+        
+        th {
+            padding: 15px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        td {
+            font-family: system-ui;
+            text-align: center;
+            padding: 10px;
+        }
+        td:nth-child(1) {
+            text-align: left;
+        }
+        td:nth-child(3), th:nth-child(3){
+            font-size: large;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            font-weight: bold;
+        }
+
+        #plan-selection {
+            display: flex;
+            justify-content: space-evenly;
+            padding: 20px;
+        }
+        #plan-selection button{
+            padding: 15px;
+            font-size: large;
+            background-color: blanchedalmond;
+            border: none;
+            box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+    </style>
+</head>
+<body>
+    <section class="pricing-container">
+        <table>
+            <colgroup>
+                <col>
+                <col>
+                <col span="1" class="featured">
+                <col>
+            </colgroup>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Basic</th>
+                    <th>Pro</th>
+                    <th>Enterprise</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Storage</td>
+                    <td>10GB</td>
+                    <td>100GB</td>
+                    <td>1000GB</td>
+                </tr>
+                <tr>
+                    <td>Database</td>
+                    <td>-</td>
+                    <td>10</td>
+                    <td>Unlimited</td>
+                </tr>
+                <tr>
+                    <td>SSD Disks</td>
+                    <td>-</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>Yes</td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="plan-selection">
+            <button>Buy the <br><strong>Basic</strong> plan</button>
+            <button>Buy the <br><strong>Pro</strong> plan</button>
+            <button>Buy the <br><strong>Enterprise</strong> plan</button>
+        </div>
+    </section>
+</body>
+</html>
