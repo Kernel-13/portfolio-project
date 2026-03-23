@@ -7,9 +7,17 @@
         <meta name="description" content="A page to work with CSS Grid and/or Flexbox wrapping">
         <style>
         /* * { outline: 1px solid red; } */
+            header {
+                position: sticky;
+                top: 0;
+                background-color: white;
+            }
             h1 {
                 margin-left: 1%;
-                margin-bottom: 0%;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                padding-top: 10px;
+                padding-bottom: 10px;
                 font-family: Verdana, Geneva, Tahoma, sans-serif;
             }
             .news-grid {
@@ -29,17 +37,28 @@
                 font-family: monospace;
                 font-size: small;
                 text-decoration: none;
-                color: dimgray;
+                color: rgb(105, 105, 105);
             }
             .news-grid a:hover {
-                font-size: medium;
                 color: red;
             }
-            .news-grid a:visited {
-                font-size: medium;
-            }
-            @media (max-width: 768px) {
+            @media screen and (max-width: 768px) {
                 .news-grid { grid-template-columns:  repeat(1, 1fr); }
+            }
+            @media (prefers-color-scheme: dark){
+                body {
+                    background-color: rgba(0, 0, 0, 0.8);
+                    color: white;               
+                }
+                header {
+                    background-color: dimgray;
+                }
+                .news-grid a {
+                    color: rgb(200, 200, 200);
+                }
+                .news-grid a:hover {
+                    color: yellow;
+                }
             }
         </style>
         
