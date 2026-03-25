@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Raycast Clone</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../assets/css/raycast_style.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    </head>
+    <body>
+        <nav class="nav-bar">
+            <div id="raycast-logo">
+                <p><a href=""><i class="bi bi-bar-chart-steps" style="font-size: 17px;"></i> Raycast</a></p>
+            </div>
+            <div id="nav-bar-options">
+                <a href="">Store</a>
+                <a href="">Pro</a>
+                <a href="">AI</a>
+                <a href="">iOS</a>
+                <a href="">Windows</a>
+                <a href="">Teams</a>
+                <a href="">Developers</a>
+                <a href="">Blog</a>
+                <a href="">Pricing</a>
+            </div>
+            <div id="log-in">
+                <a href="">Log In</a>
+                <a href="" id="download-button"><p><i class="bi bi-apple"></i> Download</p></a>
+            </div>
+        </nav>
+        
+        <header>
+            <div id="header-image-div"></div>
+            <div id="header-text-div">
+                <h1>Store</h1>
+                <h3>Sprinkle a little magic on your day. Connect your tools,<br>
+                     and take your daily workflow to the next level.</h3>
+            </div>
+            <div id="search-bar">
+                <input type="text" id="header-search-bar" placeholder="Search...">
+            </div>
+        </header>
+        
+        <section class="featured-items">
+            <div id="explore-text">
+                <h1>Explore</h1>
+                <h3>Browse and install extensions built by the community</h3>
+            </div>
+            <div id="feature-text">
+                <h2>Featured</h2>
+                <p>Our top picks to get you started</p>
+            </div>
+            <div class="featured-board">
+                <div class="featured-card">
+                    <div>
+                        <img src="https://www.raycast.com/_next/image?url=https%3A%2F%2Ffiles.raycast.com%2Fvqu023o8sfawfmn4ghc3ml26ht2s&w=64&q=70" alt="" class="featured-card-image">
+                    </div>
+                    <h2 class="featured-card-title">BPM Calculator</h2>
+                    <p class="featured-card-description">Calculate BPM for a song by using the enter button on the keyboard</p>
+                    <p class="featured-card-author"><a href="">Per Nielsen Tikær</a></p>
+                    <a href=""><button class="featured-card-button">Install Extension</button></a>
+                </div>
+                <div class="featured-card">
+                    <div>
+                        <img src="https://www.raycast.com/_next/image?url=https%3A%2F%2Ffiles.raycast.com%2F2k56uieh6yg1f8ljxo3bvqysqbnh&w=64&q=70" alt="" class="featured-card-image">
+                    </div>
+                    <h2 class="featured-card-title">Google Calendar</h2>
+                    <p class="featured-card-description">Manage your Google calendar easily. Create events, search contacts, and check out your upcoming schedule.</p>
+                    <p class="featured-card-author"><a href="">Thomas Paul Mann</a></p>
+                    <a href=""><button class="featured-card-button">Install Extension</button></a>
+                </div>
+                <div class="featured-card">
+                    <div>
+                        <img src="https://www.raycast.com/_next/image?url=https%3A%2F%2Ffiles.raycast.com%2F0ajo20osogrt5nc7y06mzx3s2i7p&w=64&q=70" alt="" class="featured-card-image">
+                    </div>
+                    <h2 class="featured-card-title">XKCD Comics</h2>
+                    <p class="featured-card-description">Browse the xkcd comics and keep track of the ones you've read.</p>
+                    <p class="featured-card-author"><a href="">Maggie Liu</a></p>
+                    <a href=""><button class="featured-card-button">Install Extension</button></a>
+                </div>
+            </div>
+        </section>
+
+        <section class="explore-items">
+            <div id="filters-search">
+                <div id="filter-tabs">
+                    <button id="tab-one">All Extensions</button>
+                    <button id="tab-two">Recently Added</button>
+                    <button id="tab-three">Popular</button>
+                </div>
+                <div id="filter-other">
+                    <div id="filter-os">
+                        <button>All</button>
+                        <button><i class="bi bi-microsoft"></i></button>
+                        <button><i class="bi bi-apple"></i></button>
+                    </div>
+                    <div id="extension-search">
+                        <input type="text" id="header-search-bar" placeholder="Search...">
+                    </div>
+                </div>
+            </div>
+            <div id="item-grid">
+                <h2>Most Popular</h2>
+                <p>The most downloaded extensions from the Store</p>
+                <div id="extension-container">
+                    <div class="extension-card">
+                        <div class="extension-card-top">
+                            <div class="extension-title">
+                                <img src="https://www.raycast.com/_next/image?url=https%3A%2F%2Ffiles.raycast.com%2Fcmpaierw3qz40cbo094cu7od9pgb&w=32&q=70" alt=""><h2>Slack</h2>
+                            </div>
+                            <a href="" >
+                                <p class="extension-install">
+                                        Install
+                                </p>
+                            </a>
+                        </div>
+                        <div class="extension-description">
+                            <p>Search for chats, see unread messages, snooze snooze snooze snooze snooze snooze snooze snooze notifications, and set your presence status.</p>
+                        </div>
+                        <div class="extension-stats">
+                            <a><i class="bi bi-people-fill"></i> Per Nielsen Tikær Per Tikær</a>
+                            <a><i class="bi bi-bounding-box"></i> 35 Commands</a>
+                            <a><i class="bi bi-download"></i> 525,266 Downloads</a>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+
+        <footer>
+            <div id="footer-links">
+                <ul>
+                    <li>Product</li>
+                    <li><a href="">Store</a></li>
+                    <li><a href="">Pro</a></li>
+                    <li><a href="">Teams</a></li>
+                    <li><a href="">Pricing</a></li>
+                    <li><a href="">Changelog</a></li>
+                    <li><a href="">Browser Extension</a></li>
+                    <li><a href="">Developers</a></li>
+                    <li><a href="">iOS</a></li>
+                    <li><a href="">Windows</a></li>
+                    <li><a href="">API Docs</a></li>
+                    <li><a href="">Manual</a></li>
+                    <li><a href="">Troubleshooting</a></li>
+                    <li><a href="">Raycast vs Alfred</a></li>
+                    <li><a href="">FAQ</a></li>
+                </ul>
+               <ul>
+                    <li>Core Features</li>
+                    <li><a href="">Raycast AI</a></li>
+                    <li><a href="">Raycast Notes</a></li>
+                    <li><a href="">Raycast Focus</a></li>
+                    <li><a href="">Clipboard History</a></li>
+                    <li><a href="">Window Management</a></li>
+                    <li><a href="">Snippets</a></li>
+                    <li><a href="">File Search</a></li>
+                    <li><a href="">Quicklinks</a></li>
+                    <li><a href="">Calculator</a></li>
+                    <li><a href="">Calendar</a></li>
+                    <li><a href="">System</a></li>
+                    <li><a href="">Emoji Picker</a></li>
+                </ul>
+                <ul>
+                    <li>Top Extensions</li>
+                    <li><a href="">Design Tools</a></li>
+                    <li><a href="">Developer Tools</a></li>
+                    <li><a href="">Pomodoro Timer</a></li>
+                    <li><a href="">Productivity</a></li>
+                    <li><a href="">Project Management</a></li>
+                    <li><a href="">Time Management</a></li>
+                    <li><a href="">Transcript</a></li>
+                    <li><a href="">Translation</a></li>
+                    <li><a href="">Work From Home</a></li>
+                    <li><a href="">AI</a></li>
+                </ul>
+                <ul>
+                    <li>Company</li>
+                    <li><a href="">Manifesto</a></li>
+                    <li><a href="">Customers</a></li>
+                    <li><a href="">Careers</a></li>
+                    <li><a href="">Terms of Service</a></li>
+                    <li><a href="">Privacy Policy</a></li>
+                    <li><a href="">Acceptable Use Policy</a></li>
+                    <li><a href="">DPA</a></li>
+                    <li><a href="">Trust Center</a></li>
+                    <li><a href="">Press Kit</a></li>
+                    <li><a href="">Contact</a></li>
+                </ul>
+                <ul>
+                    <li>Community</li>
+                    <li><a href="">Community Stories</a></li>
+                    <li><a href="">Ambassadors</a></li>
+                    <li><a href="">Slack</a></li>
+                    <li><a href="">X/Twitter</a></li>
+                    <li><a href="">GitHub</a></li>
+                    <li><a href="">Dribbble</a></li>
+                </ul>
+                <ul>
+                    <li>By Raycast</li>
+                    <li><a href="">Try Raycast AI</a></li>
+                    <li><a href="">Explore Snippets</a></li>
+                    <li><a href="">Explore Quicklinks</a></li>
+                    <li><a href="">Prompts</a></li>
+                    <li><a href="">Chat Presets</a></li>
+                    <li><a href="">ray.so</a></li>
+                    <li><a href="">Icon Maker</a></li>
+                    <li><a href="">Merch</a></li>
+                    <li><a href="">Wallpapers</a></li>
+                </ul>
+
+            </div>
+            <div id="subscribe-container">
+                <div id="subscribe-left-block">
+                    <h4>Subscribe to our newsletter.</h4>
+                    <p>Get product updates and news <br>in your inbox. No spam.</p>
+                </div>
+                <div id="subscribe-right-block">
+                    <div id="newsletter-form">
+                        <input type="text" id="email-input" placeholder="example@mail.com">
+                        <button id="subscribe-button">Subscribe</button>
+                    </div>
+                    <div id="consent-notice">
+                        <p>By submitting your email address, you agree to receive Raycast's monthly newsletter. 
+                            For more information, please read our privacy policy. 
+                            You can always withdraw your consent.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+    <script>
+        let container = document.getElementById("extension-container");
+        let extension = container.innerHTML;
+        for (let index = 0; index < 9; index++) {
+            container.innerHTML += extension
+        }
+    </script>
+</html>
