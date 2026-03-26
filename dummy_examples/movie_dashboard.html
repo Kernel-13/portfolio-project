@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Movie Vault</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --accent-hover: #0ea5e9;
+            --danger: #f43f5e;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            font-family: system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Form styling */
+        .add-movie-form {
+            background-color: var(--bg-secondary);
+            padding: 20px;
+            border-radius: 12px;
+            display: flex;
+            gap: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+        }
+
+        .add-movie-form input, .add-movie-form select {
+            background-color: var(--bg-primary);
+            border: 1px solid #334155;
+            color: var(--text-main);
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            flex: 1;
+        }
+
+        .add-movie-form select {
+            flex: 0.5;
+        }
+
+        .add-movie-form button {
+            background-color: var(--accent);
+            color: #0f172a;
+            border: none;
+            padding: 0 24px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .add-movie-form button:hover {
+            background-color: var(--accent-hover);
+        }
+
+        /* Movie Grid */
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .movie-card {
+            background-color: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 20px;
+            position: relative;
+            border: 1px solid #334155;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 180px;
+        }
+
+        .movie-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin: 0 0 5px 0;
+        }
+
+        .movie-genre {
+            color: var(--accent);
+            font-size: 0.875rem;
+            margin: 0 0 15px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .movie-rating {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        .delete-btn {
+            background-color: rgba(244, 63, 94, 0.1);
+            color: var(--danger);
+            border: 1px solid rgba(244, 63, 94, 0.2);
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            align-self: flex-start;
+            transition: all 0.2s;
+        }
+
+        .delete-btn:hover {
+            background-color: var(--danger);
+            color: white;
+        }
+
+        .empty-state {
+            text-align: center;
+            color: var(--text-muted);
+            grid-column: 1 / -1;
+            padding: 40px;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>The Movie Vault</h1>
+            <p style="color: var(--text-muted)">Your personal cinematic archive</p>
+        </header>
+
+        <div class="add-movie-form">
+            <input type="text" id="movie-title-input" placeholder="Movie Title (e.g., Inception)">
+            <select id="movie-genre-input">
+                <option value="Action">Action</option>
+                <option value="Sci-Fi">Sci-Fi</option>
+                <option value="Drama">Drama</option>
+                <option value="Comedy">Comedy</option>
+            </select>
+            <input type="number" id="movie-rating-input" placeholder="Rating (1-5)" min="1" max="5">
+            <button id="add-movie-btn">Add Movie</button>
+        </div>
+
+        <div class="movie-grid" id="movie-grid">
+            <div class="empty-state" id="empty-state">
+                <i class="bi bi-film" style="font-size: 3rem; display: block; margin-bottom: 10px;"></i>
+                Your vault is empty. Add your first movie above!
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        const myMovies = [
+            { id: 1, title: "Inception", genre: "Sci-Fi", rating: 5 },
+            { id: 2, title: "The Shawshank Redemption", genre: "Drama", rating: 5 },
+            { id: 3, title: "The Dark Knight", genre: "Action", rating: 5 },
+            { id: 4, title: "Interstellar", genre: "Sci-Fi", rating: 4 },
+            { id: 5, title: "Pulp Fiction", genre: "Action", rating: 4 },
+            { id: 6, title: "The Grand Budapest Hotel", genre: "Comedy", rating: 4 },
+            { id: 7, title: "The Godfather", genre: "Drama", rating: 5 },
+            { id: 8, title: "Arrival", genre: "Sci-Fi", rating: 3 },
+            { id: 9, title: "Superbad", genre: "Comedy", rating: 4 },
+            { id: 10, title: "Parasite", genre: "Drama", rating: 5 },
+            { id: 11, title: "Mad Max: Fury Road", genre: "Action", rating: 4 },
+            { id: 12, title: "Eternal Sunshine of the Spotless Mind", genre: "Sci-Fi", rating: 5 }
+        ];
+
+        const docFragment = new DocumentFragment()
+
+        for (const movie of myMovies) {
+            let movieCard = document.createElement('div');
+            let movieCardDiv = document.createElement('div');
+            let movieTitle = document.createElement('h3');
+            let movieGenre = document.createElement('p');
+            let movieRating = document.createElement('div');
+            let movieRatingSpan = document.createElement('span');
+            let movieDeleteButton  = document.createElement('button');;
+            let movieDeleteIcon = document.createElement('i');
+            
+            movieTitle.classList.add('movie-title')
+            movieTitle.innerText = movie['title']
+
+            movieGenre.classList.add('movie-genre')
+            movieGenre.innerText = movie['genre']
+
+            movieRating.classList.add('movie-rating')
+            movieRatingSpan.innerText = movie['rating']
+            movieRating.append('Rating: ', movieRatingSpan, '/5')
+
+            movieCardDiv.append(movieTitle)
+            movieCardDiv.append(movieGenre)
+            movieCardDiv.append(movieRating)
+
+            movieDeleteButton.classList.add('delete-btn')
+            movieDeleteIcon.classList.add('bi', 'bi-trash')
+            movieDeleteButton.append(movieDeleteIcon, ' Delete')
+
+            movieCard.classList.add('movie-card')
+            movieCard.append(movieCardDiv, movieDeleteButton)
+            docFragment.append(movieCard)
+        }
+        
+        document.getElementById('empty-state').style.display = 'none'
+        let movieGrid = document.getElementById('movie-grid')
+        movieGrid.append(docFragment)
+        
+    </script>
+</body>
+</html>
