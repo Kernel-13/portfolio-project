@@ -167,7 +167,16 @@
             <input type="number" id="movie-rating-input" placeholder="Rating (1-5)" min="1" max="5">
             <button id="add-movie-btn">Add Movie</button>
         </div>
-
+        <div class="filter-section" style="margin-bottom: 20px; display: flex; gap: 10px; align-items: center;">
+            <span>Filter by Genre:</span>
+            <select id="filter-genre">
+                <option value="All">All Genres</option>
+                <option value="Action">Action</option>
+                <option value="Sci-Fi">Sci-Fi</option>
+                <option value="Drama">Drama</option>
+                <option value="Comedy">Comedy</option>
+            </select>
+        </div>
         <div class="movie-grid" id="movie-grid">
             <div class="empty-state" id="empty-state">
                 <i class="bi bi-film" style="font-size: 3rem; display: block; margin-bottom: 10px;"></i>
@@ -263,6 +272,24 @@
             MovieRatingInput.value = ''
         })
         
+        document.getElementById('filter-genre').addEventListener('change', (event) => {
+            let node = event.currentTarget
+
+            if (node.selectedIndex == 0) {
+                for (const movie of document.getElementsByClassName('movie-card')) {
+                    movie.style.display = 'block'
+                }
+            } else {
+                for (const movie of document.getElementsByClassName('movie-genre')) {
+                    if (movie.textContent != node.value) {
+                        movie.parentElement.parentElement.style.display = 'none'
+                    } else {
+                        movie.parentElement.parentElement.style.display = 'block'
+                    }
+                }
+            }
+        })
+
     </script>
 </body>
 </html>
