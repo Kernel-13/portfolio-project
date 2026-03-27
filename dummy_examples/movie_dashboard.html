@@ -193,9 +193,7 @@
             { id: 12, title: "Eternal Sunshine of the Spotless Mind", genre: "Sci-Fi", rating: 5 }
         ];
 
-        const docFragment = new DocumentFragment()
-
-        for (const movie of myMovies) {
+        function createMovieCardElement(title, genre, rating) {
             let movieCard = document.createElement('div');
             let movieCardDiv = document.createElement('div');
             let movieTitle = document.createElement('h3');
@@ -206,13 +204,13 @@
             let movieDeleteIcon = document.createElement('i');
             
             movieTitle.classList.add('movie-title')
-            movieTitle.innerText = movie['title']
+            movieTitle.innerText = title
 
             movieGenre.classList.add('movie-genre')
-            movieGenre.innerText = movie['genre']
+            movieGenre.innerText = genre
 
             movieRating.classList.add('movie-rating')
-            movieRatingSpan.innerText = movie['rating']
+            movieRatingSpan.innerText = rating
             movieRating.append('Rating: ', movieRatingSpan, '/5')
 
             movieCardDiv.append(movieTitle)
@@ -225,12 +223,33 @@
 
             movieCard.classList.add('movie-card')
             movieCard.append(movieCardDiv, movieDeleteButton)
-            docFragment.append(movieCard)
+            return movieCard
+        }
+
+        const docFragment = new DocumentFragment()
+        for (const movie of myMovies) {
+            docFragment.append(createMovieCardElement(movie['title'], movie['genre'], movie['rating']))
         }
         
         document.getElementById('empty-state').style.display = 'none'
         let movieGrid = document.getElementById('movie-grid')
         movieGrid.append(docFragment)
+
+        document.getElementById('add-movie-btn').addEventListener('click', () => {
+            let MovieTitleInput = document.getElementById('movie-title-input')
+            let MovieGenreInput = document.getElementById('movie-genre-input')
+            let MovieRatingInput = document.getElementById('movie-rating-input')
+
+            let newMovie = {id: myMovies.length, title: MovieTitleInput.value, genre: MovieGenreInput.value, rating: MovieRatingInput.value}
+            myMovies.push(newMovie)
+            
+            let newCard = createMovieCardElement(MovieTitleInput.value, MovieGenreInput.value, MovieRatingInput.value)
+            movieGrid.append(newCard)
+            
+            MovieTitleInput.value = ''
+            MovieGenreInput.value = ''
+            MovieRatingInput.value = ''
+        })
         
     </script>
 </body>
