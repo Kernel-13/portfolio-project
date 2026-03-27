@@ -221,6 +221,18 @@
             movieDeleteIcon.classList.add('bi', 'bi-trash')
             movieDeleteButton.append(movieDeleteIcon, ' Delete')
 
+            movieDeleteButton.addEventListener('click', (event) => {
+                const node = event.currentTarget
+
+                let movieIndex = myMovies.findIndex(x => x.title == title)
+                myMovies.splice(movieIndex, 1)
+                node.parentNode.remove()
+
+                if (myMovies.length < 1) {
+                    document.getElementById('empty-state').style.display = 'block'
+                }
+            })
+
             movieCard.classList.add('movie-card')
             movieCard.append(movieCardDiv, movieDeleteButton)
             return movieCard
@@ -240,14 +252,14 @@
             let MovieGenreInput = document.getElementById('movie-genre-input')
             let MovieRatingInput = document.getElementById('movie-rating-input')
 
-            let newMovie = {id: myMovies.length, title: MovieTitleInput.value, genre: MovieGenreInput.value, rating: MovieRatingInput.value}
+            let newMovie = {id: Date.now(), title: MovieTitleInput.value, genre: MovieGenreInput.value, rating: MovieRatingInput.value}
             myMovies.push(newMovie)
             
             let newCard = createMovieCardElement(MovieTitleInput.value, MovieGenreInput.value, MovieRatingInput.value)
             movieGrid.append(newCard)
             
             MovieTitleInput.value = ''
-            MovieGenreInput.value = ''
+            MovieGenreInput.selectedIndex = 0
             MovieRatingInput.value = ''
         })
         
