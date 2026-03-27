@@ -187,7 +187,7 @@
 
     <script>
 
-        const myMovies = [
+        let myMovies = JSON.parse(localStorage.getItem('myMovies')) || [
             { id: 1, title: "Inception", genre: "Sci-Fi", rating: 5 },
             { id: 2, title: "The Shawshank Redemption", genre: "Drama", rating: 5 },
             { id: 3, title: "The Dark Knight", genre: "Action", rating: 5 },
@@ -202,7 +202,30 @@
             { id: 12, title: "Eternal Sunshine of the Spotless Mind", genre: "Sci-Fi", rating: 5 }
         ];
 
-        function createMovieCardElement(title, genre, rating) {
+        function saveToLocalStorage() {
+            localStorage.setItem('myMovies', JSON.stringify(myMovies));
+        }
+
+        function renderMovieGrid(movieArray) {
+            let movieGrid = document.getElementById('movie-grid')
+            let emptyGrid = document.getElementById('empty-state')
+            movieGrid.innerHTML = ''
+
+            if (movieArray.length === 0) {
+                movieGrid.append(emptyGrid)
+                emptyGrid.style.display = 'block'
+                return
+            }
+
+            let fragment = new DocumentFragment();
+            movieArray.forEach(movie => {
+                let card = createMovieCardElement(movie.id, movie.title, movie.genre, movie.rating)
+                fragment.append(card)
+            });
+            movieGrid.append(fragment)
+        }
+
+        function createMovieCardElement(id, title, genre, rating) {
             let movieCard = document.createElement('div');
             let movieCardDiv = document.createElement('div');
             let movieTitle = document.createElement('h3');
@@ -233,8 +256,9 @@
             movieDeleteButton.addEventListener('click', (event) => {
                 const node = event.currentTarget
 
-                let movieIndex = myMovies.findIndex(x => x.title == title)
+                let movieIndex = myMovies.findIndex(x => x.id == id)
                 myMovies.splice(movieIndex, 1)
+                saveToLocalStorage()
                 node.parentNode.remove()
 
                 if (myMovies.length < 1) {
@@ -243,13 +267,14 @@
             })
 
             movieCard.classList.add('movie-card')
+            movieCard.dataset.id = id;
             movieCard.append(movieCardDiv, movieDeleteButton)
             return movieCard
         }
 
         const docFragment = new DocumentFragment()
         for (const movie of myMovies) {
-            docFragment.append(createMovieCardElement(movie['title'], movie['genre'], movie['rating']))
+            docFragment.append(createMovieCardElement(movie['id'], movie['title'], movie['genre'], movie['rating']))
         }
         
         document.getElementById('empty-state').style.display = 'none'
@@ -261,32 +286,25 @@
             let MovieGenreInput = document.getElementById('movie-genre-input')
             let MovieRatingInput = document.getElementById('movie-rating-input')
 
-            let newMovie = {id: Date.now(), title: MovieTitleInput.value, genre: MovieGenreInput.value, rating: MovieRatingInput.value}
+            let movieId = Date.now()
+            let newMovie = {id: movieId, title: MovieTitleInput.value, genre: MovieGenreInput.value, rating: MovieRatingInput.value}
             myMovies.push(newMovie)
             
-            let newCard = createMovieCardElement(MovieTitleInput.value, MovieGenreInput.value, MovieRatingInput.value)
+            let newCard = createMovieCardElement(movieId, MovieTitleInput.value, MovieGenreInput.value, MovieRatingInput.value)
             movieGrid.append(newCard)
             
             MovieTitleInput.value = ''
             MovieGenreInput.selectedIndex = 0
             MovieRatingInput.value = ''
+            saveToLocalStorage()
         })
         
         document.getElementById('filter-genre').addEventListener('change', (event) => {
-            let node = event.currentTarget
-
-            if (node.selectedIndex == 0) {
-                for (const movie of document.getElementsByClassName('movie-card')) {
-                    movie.style.display = 'block'
-                }
+            if (event.currentTarget.value != 'All') {
+                let filteredMovies = myMovies.filter(movie => movie.genre === event.currentTarget.value)
+                renderMovieGrid(filteredMovies)
             } else {
-                for (const movie of document.getElementsByClassName('movie-genre')) {
-                    if (movie.textContent != node.value) {
-                        movie.parentElement.parentElement.style.display = 'none'
-                    } else {
-                        movie.parentElement.parentElement.style.display = 'block'
-                    }
-                }
+                renderMovieGrid(myMovies)
             }
         })
 
