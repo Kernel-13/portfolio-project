@@ -304,6 +304,9 @@
 
                 tasks.push({id: Date.now(), title: newTaskTitle.value.trim(), priority: newTaskPriority.value, status: 'todo'})
                 updateStorage()
+
+                newTaskTitle.value = ''
+                newTaskPriority.selectedIndex = 0
                 renderBoard()
             })
         })
