@@ -125,15 +125,61 @@
             text-transform: capitalize;
             color: var(--accent);
         }
+
+        .search-container {
+            position: relative; 
+            flex: 1;
+            margin-bottom: 20px;
+        }
+
+        .suggestions-list {
+            position: absolute;
+            top: 100%; 
+            left: 0;
+            right: 0;
+            background: var(--card);
+            border: 1px solid #334155;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            max-height: 250px;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
+        }
+
+        .suggestion-item {
+            padding: 12px;
+            cursor: pointer;
+            border-bottom: 1px solid #334155;
+            transition: background 0.2s;
+        }
+
+        .suggestion-item:last-child {
+            border-bottom: none;
+        }
+
+        .suggestion-item:hover {
+            background: #334155;
+            color: var(--accent);
+        }
+
+        .suggestion-item span {
+            display: block;
+            font-size: 0.8rem;
+            color: #94a3b8; /* For the country/region name */
+        }
     </style>
     <script type="module" src="../assets/js/main.js"></script>
 </head>
 <body>
 
     <div class="container">
-        <div class="search-box">
-            <input type="text" id="city-input" placeholder="Enter city name (e.g. Paris)...">
-            <button id="search-btn" style="background: var(--accent); border:none; padding: 12px 20px; border-radius: 8px; cursor:pointer;">Search</button>
+        <div class="search-container">
+            <input type="text" id="city-input" placeholder="Search for a city..." autocomplete="off">
+            <ul id="suggestions-list" class="suggestions-list"></ul>
         </div>
 
         <div id="error-banner" class="error-msg"></div>

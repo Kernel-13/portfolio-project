@@ -30,6 +30,11 @@ export const WMO_WEATHER_CODES = {
 };
 
 export async function getLocation(city) {
+
+    if (city.length < 2) {
+        return undefined
+    }
+
     try {
         let response = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${city}&count=10&language=en&format=json`)
         if (!response.ok) {
@@ -38,35 +43,12 @@ export async function getLocation(city) {
         }
 
         let data = await response.json()
-        return data.results[0]
+        return data.results
     } catch (error) {
         console.error(error)        
     }
     
 }
-
-/*
-export async function getLocationTwo(event) {
-
-    const input = event.target.value
-    if (input.length < 3) {
-        return
-    }
-
-    try {
-        let response = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${input}&count=10&language=en&format=json`)
-        if (!response.ok) {
-            console.error('Error: Geocoding Server is not returning the expected response')
-            return
-        }
-
-        let data = response.json()
-        return data
-    } catch (error) {
-        console.error(error)        
-    }
-    
-}*/
 
 export async function getWeatherData(lat, lon) {
     try {
